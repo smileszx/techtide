@@ -13,6 +13,8 @@
         <module>techtide-pay</module>
         <module>techtide-order</module>
         <module>techtide-web</module>
+        <module>techtide-web</module>
+        <module>techtide-web</module>
     </modules>
 
     <properties>

@@ -23,6 +23,15 @@ public class RocketMQProducerTest {
 
     @Test
     public void testMQProducer () throws TideMQException {
+
+
+        /**
+         * TODO：遗留问题，测试失败，可能原因如下
+         * 1. 发送超时
+         * 2. 路由不到broker
+         * 3. 服务器端启动内存不足
+         */
+
         SendResult sendResult = this.producer.sendMessage("broker-a", "TagA", "OrderID188", "Hello world", 10000);
 
         System.out.println(sendResult);
