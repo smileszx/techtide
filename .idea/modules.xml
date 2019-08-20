@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/techtide.iml" filepath="$PROJECT_DIR$/.idea/techtide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/techtide-common/techtide-common.iml" filepath="$PROJECT_DIR$/techtide-common/techtide-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/techtide-order/techtide-order.iml" filepath="$PROJECT_DIR$/techtide-order/techtide-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/techtide-pay/techtide-pay.iml" filepath="$PROJECT_DIR$/techtide-pay/techtide-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/techtide-web/techtide-web.iml" filepath="$PROJECT_DIR$/techtide-web/techtide-web.iml" />
+    </modules>
+  </component>
+</project>
