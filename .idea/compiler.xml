@@ -13,11 +13,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="techtide" target="1.5" />
+      <module name="techtide" target="8" />
       <module name="techtide-common" target="8" />
-      <module name="techtide-order" target="1.5" />
-      <module name="techtide-pay" target="1.5" />
-      <module name="techtide-web" target="1.5" />
+      <module name="techtide-order" target="8" />
+      <module name="techtide-pay" target="8" />
+      <module name="techtide-web" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
