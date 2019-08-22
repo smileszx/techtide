@@ -34,6 +34,7 @@
         <swagger2.version>2.9.2</swagger2.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <dubbo.version>2.7.0</dubbo.version>
+        <curator.version>2.13.0</curator.version>
     </properties>
 
     <dependencies>
@@ -123,6 +124,16 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

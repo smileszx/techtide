@@ -6,13 +6,20 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
     <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-    <dubbo:application name="consumer-of-helloworld-app"  />
+    <dubbo:application name="consumer-of-helloworld-app">
+        <dubbo:parameter key="qos.port" value="33333" />
+    </dubbo:application>
 
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
     <!--<dubbo:registry address="multicast://224.5.6.7:1234" />-->
-    <!-- 使用multicast广播注册中心暴露服务地址 -->
-    <dubbo:registry  address="N/A"/>
+    <!-- 直连方式 -->
+    <!--<dubbo:registry  address="N/A"/>-->
+    <!--Zookeeper单机-->
+    <dubbo:registry  address="zookeeper://192.168.1.101:2181"/>
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="demoService" interface="com.ai.tide.api.service.DemoService" url="dubbo://localhost:20880"/>
+    <!--<dubbo:reference id="demoService" interface="com.ai.tide.api.service.DemoService" url="dubbo://localhost:20880"/>-->
+    <dubbo:reference id="demoService" interface="com.ai.tide.api.service.DemoService"/>
+    <dubbo:reference id="paymentService" interface="com.ai.tide.api.service.PaymentService"/>
+
 </beans>
