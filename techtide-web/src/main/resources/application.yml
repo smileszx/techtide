@@ -1,6 +1,9 @@
 server:
-  port: 8761
-
-eureka:
-  instance:
-    hostname: localhost
+  port: 8080
+  servlet:
+    session:
+      timeout: 1
+spring:
+  redis:
+    host: 192.168.1.101
+    port: 6379
