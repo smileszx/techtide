@@ -4,6 +4,7 @@ import com.techtide.web.po.User;
 import com.techtide.web.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.catalina.startup.Tomcat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +58,8 @@ public class UserController {
 
         HttpSession session2 = request.getSession();
         System.out.println("response session: " + session2.getId());
+
+        Tomcat tomcat = new Tomcat();
 
         return service.listUser(id) + " Set-Cookie: " + response.getHeaders("Set-Cookie");
     }
