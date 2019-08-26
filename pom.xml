@@ -15,6 +15,9 @@
         <module>techtide-web</module>
         <module>techtide-service</module>
         <module>techtide-api</module>
+        <module>techtide-eureka-server</module>
+        <module>techtide-zuul</module>
+        <module>techtide-auth-server</module>
     </modules>
 
     <properties>
