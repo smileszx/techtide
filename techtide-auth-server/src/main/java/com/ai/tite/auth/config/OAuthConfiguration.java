@@ -3,6 +3,7 @@ package com.ai.tite.auth.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -26,27 +27,31 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
+        clients
+                .inMemory()
                 .withClient("zuul_server")
                 .secret("secret")
-                .scopes("WRIGTH", "read").autoApprove(true)
+                .scopes("WRIGTH", "read")
+                .autoApprove(true)
                 .authorities("WRIGTH_READ", "WRIGTH_WRITE")
                 .authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code");
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(jwtTokenStore())
-                .tokenEnhancer(jwtAccessTokenConverter())
+        endpoints
+                .tokenStore(jwtTokenStore())
+                .tokenEnhancer(jwtTokenConverter())
                 .authenticationManager(authenticationManager);
     }
 
     @Bean
     public TokenStore jwtTokenStore() {
-        return new JwtTokenStore(jwtAccessTokenConverter());
+        return new JwtTokenStore(jwtTokenConverter());
     }
+
     @Bean
-    protected JwtAccessTokenConverter jwtAccessTokenConverter () {
+    protected JwtAccessTokenConverter jwtTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("springcloud123");
         return converter;

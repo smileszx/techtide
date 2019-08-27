@@ -30,6 +30,9 @@
         <spring.version>5.1.8.RELEASE</spring.version>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <spring-cloud.verison>Greenwich.SR1</spring-cloud.verison>
+        <!--<spring.version>5.0.7.RELEASE</spring.version>-->
+        <!--<spring-boot.version>2.0.3.RELEASE</spring-boot.version>-->
+        <!--<spring-cloud.verison>Finchley.RELEASE</spring-cloud.verison>-->
         <rocketmq.version>4.5.1</rocketmq.version>
         <commons-lang3.version>3.9</commons-lang3.version>
         <guava.version>28.0-jre</guava.version>
@@ -57,12 +60,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j-api.version}</version>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
-            <!--<scope>test</scope>-->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>ch.qos.logback</groupId>-->
+            <!--<artifactId>logback-classic</artifactId>-->
+            <!--<version>${logback-classic.version}</version>-->
+            <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+        <!--</dependency>-->
     </dependencies>
 
     <dependencyManagement>

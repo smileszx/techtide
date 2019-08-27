@@ -28,17 +28,4 @@ public class TestController {
         response.addCookie(new Cookie("userAge", "30"));
         return a + b;
     }
-
-    @RequestMapping("/test")
-    public String testAuth (HttpServletRequest request) {
-        System.out.println("========================== Header ===========================");
-        Enumeration headNames = request.getHeaderNames();
-        while (headNames.hasMoreElements()) {
-            String key = (String) headNames.nextElement();
-            System.out.println(key + ": " + request.getHeader(key));
-        }
-        System.out.println("========================== Header ===========================");
-
-        return "hellooooooooooooooooooooooooooooooooooooooo!";
-    }
 }

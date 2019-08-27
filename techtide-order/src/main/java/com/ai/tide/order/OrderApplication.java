@@ -12,6 +12,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
 /**
  * @Description TODO
@@ -21,38 +26,51 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableResourceServer
+@RestController
 public class OrderApplication extends ResourceServerConfigurerAdapter {
 
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class, args);
     }
 
+    @RequestMapping("/test")
+    public String test(HttpServletRequest request) {
+        System.out.println("----------------header----------------");
+        Enumeration headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String key = (String) headerNames.nextElement();
+            System.out.println(key + ": " + request.getHeader(key));
+        }
+        System.out.println("----------------header----------------");
+        return "hellooooooooooooooo!";
+    }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.csrf()
-                .disable()
+        http
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**")
-                .authenticated()
+                .antMatchers("/**").authenticated()
                 .antMatchers(HttpMethod.GET, "/test")
-                .hasAnyAuthority("WRIGTH_READ");
+                .hasAuthority("WRIGTH_READ");
     }
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId("WRIGTH")
+        resources
+                .resourceId("WRIGTH")
                 .tokenStore(jwtTokenStore());
     }
 
     @Bean
-    protected JwtAccessTokenConverter jwtAccessTokenConverter() {
+    protected JwtAccessTokenConverter jwtTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("springcloud123");
         return converter;
     }
 
     @Bean
-    public TokenStore jwtTokenStore () {
-        return new JwtTokenStore(jwtAccessTokenConverter());
+    public TokenStore jwtTokenStore() {
+        return new JwtTokenStore(jwtTokenConverter());
     }
 }

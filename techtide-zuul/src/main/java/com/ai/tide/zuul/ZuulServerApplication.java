@@ -24,7 +24,7 @@ public class ZuulServerApplication extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
+        http.authorizeRequests()
                 .antMatchers("/login", "/client/**")
                 .permitAll()
                 .anyRequest()

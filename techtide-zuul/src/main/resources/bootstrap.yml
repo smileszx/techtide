@@ -18,7 +18,7 @@ zuul:
     #      path: /client/**
     #      serverId: client-a
   strip-prefix: true
-  sensitive-headers: Cookie,Set-Cookie,Authorization
+#  sensitive-headers: Cookie,Set-Cookie,Authorization
   add-host-header: true
   retryable: true
 #  ignored-services: client-a
@@ -35,14 +35,15 @@ management:
 security:
   oauth2:
     client:
-      # 令牌端点
-      access-token-uri: http://localhost:7777/uaa/oauth/token
-      user-authorization-uri: http://localhost:7777/uaa/oauth/authorize
       # 授权端点
       # OAuth2客户端ID
       client-id: zuul_server
       # OAuth2客户端密钥
       client-secret: secret
+      registered-redirect-uri: http://www.baidu.com
+      # 令牌端点
+      access-token-uri: http://localhost:7777/uaa/oauth/token
+      user-authorization-uri: http://localhost:7777/uaa/oauth/authorize
     resource:
       jwt:
         # 使用对称加密方式，默认算法HS256

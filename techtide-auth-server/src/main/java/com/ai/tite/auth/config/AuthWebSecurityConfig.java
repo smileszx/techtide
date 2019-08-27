@@ -1,28 +1,25 @@
-package com.ai.tite.auth;
+package com.ai.tite.auth.config;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 /**
  * @Description TODO
  * @Author victor su
- * @Date 2019/8/26 21:13
+ * @Date 2019/8/27 10:50
  **/
-@SpringBootApplication
-@EnableDiscoveryClient
-public class AuthServerApplication extends WebSecurityConfigurerAdapter {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AuthServerApplication.class, args);
-    }
-
+//@Configuration
+//@EnableWebSecurity
+//@Order(1)
+public class AuthWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

@@ -12,25 +12,25 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JavaBeanConfig {
 
-    @Bean
-    public CustomFilter customFilter () {
-        return new CustomFilter();
-    }
-
-    @Bean
-    public PreAFilter preAFilter() {
-        return new PreAFilter();
-    }
-
-    @Bean
-    public PreBFilter preBFilter() {
-        return new PreBFilter();
-    }
-
-    @Bean
-    public PostFilter postFilter() {
-        return new PostFilter();
-    }
+//    @Bean
+//    public CustomFilter customFilter () {
+//        return new CustomFilter();
+//    }
+//
+//    @Bean
+//    public PreAFilter preAFilter() {
+//        return new PreAFilter();
+//    }
+//
+//    @Bean
+//    public PreBFilter preBFilter() {
+//        return new PreBFilter();
+//    }
+//
+//    @Bean
+//    public PostFilter postFilter() {
+//        return new PostFilter();
+//    }
 
 //    @Bean
 //    public AuthFilter authFilter () {
