@@ -23,8 +23,19 @@ zuul:
   retryable: true
 #  ignored-services: client-a
 #  ignored-patterns: /**/add/**/
-
-# SpringBoot 端点启动与暴露
+  ratelimit:
+    key-prefix: springcloud-book
+    enabled: true
+    repository: IN_MEMORY
+    behind-proxy: true
+    default-policy:
+      limit: 2
+      quota: 1
+      refresh-interval: 3
+      type:
+        - user
+        - origin
+        - url
 management:
   endpoints:
     web:
@@ -40,7 +51,7 @@ security:
       client-id: zuul_server
       # OAuth2客户端密钥
       client-secret: secret
-      registered-redirect-uri: http://www.baidu.com
+#      registered-redirect-uri: http://localhost:5555/login
       # 令牌端点
       access-token-uri: http://localhost:7777/uaa/oauth/token
       user-authorization-uri: http://localhost:7777/uaa/oauth/authorize

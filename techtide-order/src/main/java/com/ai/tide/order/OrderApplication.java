@@ -51,7 +51,7 @@ public class OrderApplication extends ResourceServerConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**").authenticated()
-                .antMatchers(HttpMethod.GET, "/test")
+                .antMatchers(HttpMethod.GET, "/test", "/add")
                 .hasAuthority("WRIGTH_READ");
     }
 

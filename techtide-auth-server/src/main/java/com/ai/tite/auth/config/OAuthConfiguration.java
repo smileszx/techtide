@@ -34,7 +34,9 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
                 .scopes("WRIGTH", "read")
                 .autoApprove(true)
                 .authorities("WRIGTH_READ", "WRIGTH_WRITE")
-                .authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code");
+                .authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code")
+//        .redirectUris("http://localhost:5555/client/test")
+        ;
     }
 
     @Override
