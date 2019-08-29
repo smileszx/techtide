@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiParam;
 import org.apache.catalina.startup.Tomcat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.techtide.spring.boot.autoconfigure.service.SomeService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,15 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private SomeService someService;
+
+    @ApiOperation("测试自定义starter")
+    @RequestMapping(value = "/test/{name}")
+    public String testCustomStarter (@PathVariable("name") String name) {
+        return someService.wrap(name);
+    }
 
     @ApiOperation("新增用户")
     @RequestMapping(value = "/insert", method = RequestMethod.POST)

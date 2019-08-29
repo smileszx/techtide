@@ -18,6 +18,7 @@
         <module>techtide-eureka-server</module>
         <module>techtide-zuul</module>
         <module>techtide-auth-server</module>
+        <module>techtide-spring-boot-starter</module>
     </modules>
 
     <properties>
