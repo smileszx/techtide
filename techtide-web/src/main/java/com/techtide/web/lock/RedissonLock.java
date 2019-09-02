@@ -5,6 +5,7 @@ import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,7 +21,8 @@ public class RedissonLock {
                 .setTimeout(1000000)
                 .setAddress("redis://192.168.1.102:6379");
         RedissonClient redisson = Redisson.create(config);
-        RLock rLock = redisson.getFairLock("distribute");
+        UUID uuid = UUID.randomUUID();
+        RLock rLock = redisson.getFairLock("distribute:" + uuid);
 
         try {
             // 1. 最常见的使用方法

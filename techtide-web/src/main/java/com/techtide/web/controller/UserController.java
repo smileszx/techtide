@@ -1,5 +1,6 @@
 package com.techtide.web.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.techtide.web.po.User;
 import com.techtide.web.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,32 +48,12 @@ public class UserController {
     }
     @ApiOperation("获取用户信息")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
-    public String getUserById (@ApiParam("用户ID") @RequestParam("id") Long id,
-                             HttpServletRequest request, HttpServletResponse response) {
-        Cookie[] cookies = request.getCookies();
-        Map<String, String> map = getCookie(cookies);
-        System.out.println(map);
+    public PageInfo<User> getUserById () {
 
-        String userName = map.get("userName");
-        String userAge = map.get("userAge");
-
-        if(userName == null) {
-            response.addCookie(new Cookie("userName", "zhengxiao"));
-        }
-
-        if(userAge == null) {
-            response.addCookie(new Cookie("userAge", "30"));
-        }
-
-        HttpSession session1 = request.getSession();
-        System.out.println("request session: " + session1.getId());
-
-        HttpSession session2 = request.getSession();
-        System.out.println("response session: " + session2.getId());
-
-        Tomcat tomcat = new Tomcat();
-
-        return service.listUser(id) + " Set-Cookie: " + response.getHeaders("Set-Cookie");
+        List<User> user = service.listUser();
+        System.out.println(user);
+        PageInfo<User> userPageInfo = new PageInfo<>(user);
+        return userPageInfo;
     }
 
 

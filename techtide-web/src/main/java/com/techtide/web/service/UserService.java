@@ -2,6 +2,8 @@ package com.techtide.web.service;
 
 import com.techtide.web.po.User;
 
+import java.util.List;
+
 /**
  * @Description TODO
  * @Author victor su
@@ -11,5 +13,5 @@ public interface UserService {
 
     int insert(User record);
 
-    User listUser(Long id);
+    List<User> listUser();
 }

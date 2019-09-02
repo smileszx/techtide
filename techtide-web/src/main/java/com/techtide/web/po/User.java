@@ -3,8 +3,7 @@ package com.techtide.web.po;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
-
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "主键id")
     private Long id;
 
