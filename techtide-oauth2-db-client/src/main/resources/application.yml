@@ -1,0 +1,48 @@
+auth-server: http://localhost:8881
+server:
+  port: 8882
+spring:
+  application:
+    name: oauth-client
+  datasource:
+    druid:
+      url: ${MYSQL_URL:jdbc:mysql://localhost:3306/oauth2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai}
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 10000
+      test-on-borrow: true
+      test-on-return: false
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+security:
+  oauth2:
+    client:
+      # 授权服务器配置的客户端id
+      client-id: client_1
+      # 授权服务器配置的密钥
+      client-secret: 123456
+      # 授权范围
+      scope: app
+      # 获取access token接口
+      access-token-uri: ${auth-server}/oauth/token
+      # 获取Authorization Code接口
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      authorized-grant-types: password, authorization_code
+    resource:
+      # 获取认证授权的自定义接口，可以在授权服务器，也可以在其他服务器上
+      user-info-uri: ${auth-server}/oauth/check_token
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    instance-id: ${spring.application.name}:${server.port}

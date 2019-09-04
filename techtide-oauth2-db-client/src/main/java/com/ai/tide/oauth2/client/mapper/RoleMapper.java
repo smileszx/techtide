@@ -1,6 +1,6 @@
-package com.ai.tide.mapper;
+package com.ai.tide.oauth2.client.mapper;
 
-import com.ai.tide.domain.User;
+import com.ai.tide.oauth2.client.domain.Role;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -8,9 +8,10 @@ import tk.mybatis.mapper.common.Mapper;
  * @Description
  *
  * @Author victor su
- * @Date 2019/9/3 22:45
+ * @Date 2019/9/3 23:20
  **/
 @org.apache.ibatis.annotations.Mapper
 @Repository
-public interface UserMapper extends Mapper<User> {
+public interface RoleMapper extends Mapper<Role> {
+
 }

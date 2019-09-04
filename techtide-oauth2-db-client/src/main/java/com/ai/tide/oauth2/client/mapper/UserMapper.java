@@ -1,6 +1,6 @@
-package com.ai.tide.mapper;
+package com.ai.tide.oauth2.client.mapper;
 
-import com.ai.tide.domain.User;
+import com.ai.tide.oauth2.client.domain.User;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 

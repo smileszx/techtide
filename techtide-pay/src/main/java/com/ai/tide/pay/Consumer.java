@@ -5,6 +5,7 @@ import com.ai.tide.api.service.PaymentService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Consumer {
+
     public static void main(String[] args){
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath*:spring/consumer.xml");
         context.start();

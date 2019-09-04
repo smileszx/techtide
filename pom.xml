@@ -20,8 +20,10 @@
         <module>techtide-auth-server</module>
         <module>techtide-spring-boot-starter</module>
         <module>techtide-oauth2-db-server</module>
+        <module>techtide-oauth2-db-client</module>
     </modules>
 
+    <!-- 依赖版本控制 -->
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,17 +45,20 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <dubbo.version>2.7.0</dubbo.version>
         <curator.version>2.13.0</curator.version>
-        <spring-session-data-redis.version>2.1.8.RELEASE</spring-session-data-redis.version>
+        <session-redis.version>2.1.8.RELEASE</session-redis.version>
         <spring-session.version>1.3.5.RELEASE</spring-session.version>
-        <mybatis-spring-boot-starter.version>2.1.0</mybatis-spring-boot-starter.version>
+        <mybatis-starter.version>2.1.0</mybatis-starter.version>
         <mybatis-generator.version>1.3.3</mybatis-generator.version>
         <pagehelper-starter>1.2.12</pagehelper-starter>
         <mapper-starter.version>2.1.5</mapper-starter.version>
         <mybatis.version>3.4.6</mybatis.version>
         <zuul-ratelimit.version>2.0.0.RELEASE</zuul-ratelimit.version>
         <redisson.version>3.11.2</redisson.version>
+        <druid-starter.version>1.1.10</druid-starter.version>
+        <mysql-connector.version>8.0.15</mysql-connector.version>
     </properties>
 
+    <!-- 全局依赖 -->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -74,6 +79,7 @@
         <!--</dependency>-->
     </dependencies>
 
+    <!-- 统一进行依赖管理 -->
     <dependencyManagement>
         <dependencies>
             <!--
@@ -98,6 +104,13 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>com.marcosbarbero.cloud</groupId>
+                <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+                <version>${zuul-ratelimit.version}</version>
+            </dependency>
+
+            <!-- Spring 依赖 -->
+            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
@@ -108,25 +121,30 @@
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>${session-redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session</artifactId>
+                <version>${spring-session.version}</version>
+            </dependency>
+
+            <!-- RPC -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <!-- MQ -->
+            <dependency>
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.ben-manes.caffeine</groupId>
-                <artifactId>caffeine</artifactId>
-                <version>${caffeine.version}</version>
-            </dependency>
+            <!-- swagger2文档管理 -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -137,11 +155,25 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger2.version}</version>
             </dependency>
+            <!--  Common 依赖 -->
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
             </dependency>
+            <!-- Cache guava & caffeine 对比 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+
+            <!-- Zookeeper 客户端curator -->
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
@@ -152,29 +184,23 @@
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
             </dependency>
+
+            <!-- ORM Mybatis -->
             <dependency>
-                <groupId>org.springframework.session</groupId>
-                <artifactId>spring-session-data-redis</artifactId>
-                <version>${spring-session-data-redis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.session</groupId>
-                <artifactId>spring-session</artifactId>
-                <version>${spring-session.version}</version>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis-spring-boot-starter.version}</version>
+                <artifactId>mybatis-starter</artifactId>
+                <version>${mybatis-starter.version}</version>
             </dependency>
-
-            <!-- MyBatis 生成器 -->
             <dependency>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-core</artifactId>
                 <version>${mybatis-generator.version}</version>
             </dependency>
-            <!--tk-mybatis Mapper-->
             <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
@@ -185,22 +211,16 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper-starter}</version>
             </dependency>
-            <!-- MyBatis-->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
             <!--Mysql数据库驱动-->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.15</version>
+                <version>${mysql-connector.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.marcosbarbero.cloud</groupId>
-                <artifactId>spring-cloud-zuul-ratelimit</artifactId>
-                <version>${zuul-ratelimit.version}</version>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-starter.version}</version>
             </dependency>
             <!--Redis 客户端-->
             <dependency>

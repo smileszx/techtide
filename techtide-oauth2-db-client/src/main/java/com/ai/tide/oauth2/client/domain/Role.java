@@ -1,22 +1,25 @@
-package com.ai.tide.domain;
+package com.ai.tide.oauth2.client.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * @Description
- * 授权角色
+ * @Description TODO
  * @Author victor su
- * @Date 2019/9/3 22:40
+ * @Date 2019/9/4 11:59
  **/
-@Entity
 public class Role implements GrantedAuthority {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String name;
+
     public Long getId() {
         return id;
     }
@@ -24,13 +27,20 @@ public class Role implements GrantedAuthority {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public String getAuthority() {
         return name;
     }
+
     @Override
     public String toString() {
         return "Role{" +
