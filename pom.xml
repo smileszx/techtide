@@ -56,6 +56,7 @@
         <redisson.version>3.11.2</redisson.version>
         <druid-starter.version>1.1.10</druid-starter.version>
         <mysql-connector.version>8.0.15</mysql-connector.version>
+        <kafka.version>2.3.0</kafka.version>
     </properties>
 
     <!-- 全局依赖 -->
@@ -144,6 +145,12 @@
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.12</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+
             <!-- swagger2文档管理 -->
             <dependency>
                 <groupId>io.springfox</groupId>
