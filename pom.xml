@@ -57,6 +57,7 @@
         <druid-starter.version>1.1.10</druid-starter.version>
         <mysql-connector.version>8.0.15</mysql-connector.version>
         <kafka.version>2.3.0</kafka.version>
+        <spring-kafka.version>2.1.4.RELEASE</spring-kafka.version>
     </properties>
 
     <!-- 全局依赖 -->
@@ -150,6 +151,22 @@
                 <artifactId>kafka_2.12</artifactId>
                 <version>${kafka.version}</version>
             </dependency>
+            <!-- kafka客户端 -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-streams</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
+            </dependency>
 
             <!-- swagger2文档管理 -->
             <dependency>
@@ -200,7 +217,7 @@
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-starter</artifactId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-starter.version}</version>
             </dependency>
             <dependency>
