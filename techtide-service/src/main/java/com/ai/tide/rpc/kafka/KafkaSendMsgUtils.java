@@ -23,7 +23,7 @@ public class KafkaSendMsgUtils {
             @Override
             public void onSuccess(SendResult<K, T> result) {
                 //成功业务逻辑
-                System.out.println("成功");
+                System.out.println("成功 ===> " + result);
             }
         };
         //发送失败回调
