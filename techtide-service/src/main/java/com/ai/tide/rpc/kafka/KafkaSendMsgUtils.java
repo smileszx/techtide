@@ -10,6 +10,16 @@ import org.springframework.util.concurrent.SuccessCallback;
 public class KafkaSendMsgUtils {
     public static final  ClassPathXmlApplicationContext CONTEXT = new ClassPathXmlApplicationContext("/kafka-provider.xml");
 
+    /**
+     * Kafka Producer 发送消息
+     * @param topic
+     * @param partition
+     * @param timestamp
+     * @param key
+     * @param data
+     * @param <K>
+     * @param <T>
+     */
     public static <K,T>void sendMessage(String topic, Integer partition, Long timestamp,  K key, T data) {
         KafkaTemplate<K, T> kafkaTemplate = (KafkaTemplate<K, T>) CONTEXT.getBean("kafkaTemplate");
         ListenableFuture<SendResult<K, T>> listenableFuture = null;
