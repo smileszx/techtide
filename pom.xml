@@ -21,6 +21,7 @@
         <module>techtide-spring-boot-starter</module>
         <module>techtide-oauth2-db-server</module>
         <module>techtide-oauth2-db-client</module>
+        <module>techtide-kafka</module>
     </modules>
 
     <!-- 依赖版本控制 -->
