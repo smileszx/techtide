@@ -22,6 +22,7 @@
         <module>techtide-oauth2-db-server</module>
         <module>techtide-oauth2-db-client</module>
         <module>techtide-kafka</module>
+        <module>techtide-zipkin</module>
     </modules>
 
     <!-- 依赖版本控制 -->
@@ -60,6 +61,8 @@
         <kafka.version>2.3.0</kafka.version>
         <spring-kafka.version>2.1.4.RELEASE</spring-kafka.version>
         <jedis.version>3.1.0</jedis.version>
+
+        <zipkin.version>2.12.3</zipkin.version>
     </properties>
 
     <!-- 全局依赖 -->
@@ -264,6 +267,18 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
+            </dependency>
+            <!-- zipkin -->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-server</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-autoconfigure-ui</artifactId>
+                <version>${zipkin.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
