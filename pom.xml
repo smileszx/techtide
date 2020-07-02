@@ -57,7 +57,7 @@
         <zuul-ratelimit.version>2.0.0.RELEASE</zuul-ratelimit.version>
         <redisson.version>3.11.2</redisson.version>
         <druid-starter.version>1.1.10</druid-starter.version>
-        <mysql-connector.version>8.0.15</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
         <kafka.version>2.3.0</kafka.version>
         <spring-kafka.version>2.1.4.RELEASE</spring-kafka.version>
         <jedis.version>3.1.0</jedis.version>
