@@ -53,7 +53,7 @@
         <mybatis-generator.version>1.3.3</mybatis-generator.version>
         <pagehelper-starter>1.2.12</pagehelper-starter>
         <mapper-starter.version>2.1.5</mapper-starter.version>
-        <mybatis.version>3.4.6</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <zuul-ratelimit.version>2.0.0.RELEASE</zuul-ratelimit.version>
         <redisson.version>3.11.2</redisson.version>
         <druid-starter.version>1.1.10</druid-starter.version>
